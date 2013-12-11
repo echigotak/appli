@@ -6,14 +6,14 @@
         id        = "jp.bygc.roppongiclub"
         version   = "1.0.0">
 
-    <name>六本木倶楽部会員証</name>
+    <name>Club-M</name>
 
     <description>
-        六本木倶楽部の会員証アプリです。
+        Club-Mの会員証アプリです。
     </description>
 
-    <author href="http://bygc.jp/" email="taka@linkup-c.jp">
-        ByGC
+    <author href="http://club-m.net/" email="taka@linkup-c.jp">
+        Club-M
     </author>
 
     <!--
@@ -59,9 +59,19 @@
     <icon src="res/icon/blackberry/icon-80.png"     gap:platform="blackberry" />
     <icon src="res/icon/blackberry/icon-80.png"     gap:platform="blackberry" gap:state="hover"/>
     <icon gap:platform="ios" height="57" src="res/icon/ios/icon.png" width="57" />
+    <icon gap:platform="ios" height="114" src="res/icon/ios/icon@2x.png" width="114" />
+    <icon gap:platform="ios" height="120" src="res/icon/ios/icon-60@2x.png" width="120" />
+    <icon gap:platform="ios" height="29" src="res/icon/ios/icon-small.png" width="29" />
+    <icon gap:platform="ios" height="58" src="res/icon/ios/icon-small@2x.png" width="58" />
+    <icon gap:platform="ios" height="80" src="res/icon/ios/icon-small-40@2x.png" width="80" />
     <icon gap:platform="ios" height="72" src="res/icon/ios/icon-72.png" width="72" />
-    <icon gap:platform="ios" height="114" src="res/icon/ios/icon-2x.png" width="114" />
-    <icon gap:platform="ios" height="144" src="res/icon/ios/icon-72-2x.png" width="144" />
+    <icon gap:platform="ios" height="144" src="res/icon/ios/icon-72@2x.png" width="144" />
+    <icon gap:platform="ios" height="76" src="res/icon/ios/icon-76.png" width="76" />
+    <icon gap:platform="ios" height="152" src="res/icon/ios/icon-76@2x.png" width="152" />
+    <icon gap:platform="ios" height="40" src="res/icon/ios/icon-small-40.png" width="40" />
+    <icon gap:platform="ios" height="50" src="res/icon/ios/icon-small-50.png" width="50" />
+    <icon gap:platform="ios" height="100" src="res/icon/ios/icon-small-50@2x.png" width="100" />
+
     <icon src="res/icon/webos/icon-64.png"          gap:platform="webos" />
     <icon src="res/icon/windows-phone/icon-48.png"  gap:platform="winphone" />
     <icon src="res/icon/windows-phone/icon-173.png" gap:platform="winphone"   gap:role="background" />
@@ -71,10 +81,12 @@
 	<gap:splash src="splash/ios/Default.png" gap:platform="ios" width="320" height="480" />
 	<gap:splash src="splash/ios/Default_at_2x.png" gap:platform="ios" width="640" height="960" />
 	<gap:splash src="splash/ios/Default_iphone5.png" gap:platform="ios" width="640" height="1136" />
-	<gap:splash src="splash/ios/Default-Landscape.png" gap:platform="ios" width="1024" height="748" />
 	<gap:splash src="splash/ios/Default-Portrait.png" gap:platform="ios" width="768" height="1004" />
-	<gap:splash src="splash/ios/Default-Landscape_at_2x.png" gap:platform="ios" width="2048" height="1496" />
 	<gap:splash src="splash/ios/Default-Portrait_at_2x.png" gap:platform="ios" width="1536" height="2008" />
+	<!--
+	 <gap:splash src="splash/ios/Default-Landscape.png" gap:platform="ios" width="1024" height="748" />
+	 <gap:splash src="splash/ios/Default-Landscape_at_2x.png" gap:platform="ios" width="2048" height="1496" />
+	-->
 
 	<gap:splash src="splash/android/mdpi.png" gap:platform="android" gap:density="mdpi" />
 	<gap:splash src="splash/android/hdpi.png" gap:platform="android" gap:density="hdpi" />
