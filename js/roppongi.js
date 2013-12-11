@@ -23,9 +23,11 @@ var roppongi = {
   ,onDeviceReady: function() {
 	//navigator.splashscreen.hide();
 	$('#btn_sinki').one('click touchdown',function(){
+	  $('#btn_sinki').attr('disabled', 'disabled');
 	  roppongi.submit();
 	  return false;
 	});
+	loginpage.showStatus('ボタンにアクションを登録しました。');
   }
   ,submit: function() {
 	this.data = utility.dataGet("roppongi");
@@ -41,6 +43,7 @@ var roppongi = {
   ,set: function(data) {
 	roppongi.data = data;
 	utility.dataSet("roppongi", data);
+	$('#btn_sinki').removeAttr('disabled');
 	roppongi.showID();
   }
   ,showID: function() {
@@ -69,6 +72,7 @@ var loginpage = {
 	if (navigator.onLine) {
 	    loginpage.doLogin();
 	} else {
+	    loginpage.showStatus('端末がオフラインです。');
 	    loginpage.timer
 		 = setTimeout(loginpage.checkOnline,1500);
 	}
@@ -185,7 +189,7 @@ var notif = {
  ,onNotificationAPN: function(e) {}
  ,tokenHandler: function(result) {
 	loginpage.showStatus('APNSからの通知を取得しました。');
-	registrationSuccess( result, 'iOS');
+	loginpage.registrationSuccess( result, 'iOS');
   }
  ,successHandler: function(result) {
 	loginpage.showStatus('通信成功。');
