@@ -21,8 +21,8 @@ var roppongi = {
 	document.addEventListener('deviceready', roppongi.onDeviceReady, true);
    }
   ,onDeviceReady: function() {
-	navigator.splashscreen.hide();
-	$('#btn_sinki').one('click',function(){
+	//navigator.splashscreen.hide();
+	$('#btn_sinki').one('click touchdown',function(){
 	  roppongi.submit();
 	  return false;
 	});
