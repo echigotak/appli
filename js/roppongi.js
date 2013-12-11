@@ -27,7 +27,7 @@ var roppongi = {
 	  roppongi.submit();
 	  return false;
 	});
-	loginpage.showStatus('ボタンにアクションを登録しました。');
+	//loginpage.showStatus('ボタンにアクションを登録しました。');
   }
   ,submit: function() {
 	this.data = utility.dataGet("roppongi");
@@ -114,11 +114,11 @@ var loginpage = {
 		loginpage.showStatus('サーバーにRegIDを保存しています。');
 	  }
 	  ,success: function(data) {
-		loginpage.showStatus('サーバーとの通信を解析しています。');
-		for (v in data) loginpage.showStatus(v +'::'+data[v]);
+		//loginpage.showStatus('サーバーとの通信を解析しています。');
+		//for (v in data) loginpage.showStatus(v +'::'+data[v]);
 		switch (data.code) {
 		  case 'success':
-			loginpage.showStatus('サーバーにRegIDを保存しました。');
+			//loginpage.showStatus('サーバーにRegIDを保存しました。');
 			loginpage.cb({
 			   'id'		: data.id
 			  ,'uuid'	: uuid
