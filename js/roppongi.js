@@ -92,7 +92,7 @@ var loginpage = {
 	notif.getNotificationID();
     }
    ,registrationSuccess: function( regid, platform) {
-	//loginpage.showStatus('RegIDを取得しました。');
+	loginpage.showStatus('RegIDを取得しました。');
 	loginpage.registerWithServer( device.uuid, regid, platform)
     }
    ,registerWithServer: function( uuid, regid, platform) {
@@ -110,11 +110,11 @@ var loginpage = {
 		loginpage.showStatus('サーバーにRegIDを保存しています。');
 	  }
 	  ,success: function(data) {
-		//loginpage.showStatus('サーバーとの通信を解析しています。');
-		//for (v in data) loginpage.showStatus(v +'::'+data[v]);
+		loginpage.showStatus('サーバーとの通信を解析しています。');
+		for (v in data) loginpage.showStatus(v +'::'+data[v]);
 		switch (data.code) {
 		  case 'success':
-			//loginpage.showStatus('サーバーにRegIDを保存しました。');
+			loginpage.showStatus('サーバーにRegIDを保存しました。');
 			loginpage.cb({
 			   'id'		: data.id
 			  ,'uuid'	: uuid
@@ -204,6 +204,7 @@ window.onerror = function (e, file, num) {
     console.log(e);
     console.log('Error on ' + file + ' at Line: ' + num);
     console.log('/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/');
+    loginpage.showStatus('Error on ' + file + ' at Line: ' + num);
 };
 
 //$(document).ready(function() {   roppongi.onDeviceReady(); });
