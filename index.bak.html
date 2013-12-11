@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html> 
+<html> 
+  <head> 
+  <meta charset="UTF-8">
+  <title>ログイン画面</title> 
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width, height=device-height" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+  <link rel="stylesheet" href="jqmobile/jquery.mobile-1.3.2.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="jqmobile/jquery.mobile-1.3.2.min.js"></script>
+  <script src="phonegap.js"></script>
+  <script src="PushNotification.js"></script>
+  <script src="js/roppongi.js"></script>
+        <script type="text/javascript">
+            roppongi.initialize();
+        </script>
+  <style type="text/css">
+	input.ui-body-b { background-color: white; }
+  </style>
+</head>
+<body>
+  <div data-role="page" data-theme="b" id="top" data-add-back-btn="false">
+    <div data-role="header">
+      <h1>ログイン</h1>
+    </div>
+    <div data-role="content">
+      <form action="http://kobetoyopet.xsrv.jp/notification/auth.php" method="post" data-ajax="false" id="loginform">
+	<div data-role="fieldcontain">
+	  <label for="id">ID</label>
+	  <input type="text" id="id" name="id" autocorrect="off" autocapitalize="off">
+	</div>
+	<div data-role="fieldcontain">
+	  <label for="pass">パスワード</label>
+	  <input type="password" id="pass" name="pass">
+	</div>
+	<input type="hidden" id="regid" name="regid">
+	<input type="hidden" id="uuid" name="uuid">
+	<input type="hidden" id="platform" name="platform">
+	<input type="submit" value="ログイン" id="loginbutton" name="login" data-icon="arrow-r">
+      </form>
+
+	<div id="app-status-div">
+		<ul id="app-status-ul">
+		</ul>
+	</div>
+    </div>
+    <div data-role="footer">
+      <h4><small>&copy; 2013 Paradox</small></h4>
+    </div>
+  </div>
+  <!-- /top -->
+
+  <div data-role="page" data-theme="b" id="settings" data-add-back-btn="false">
+    <div data-role="header">
+      <h1>設定</h1>
+      <a class="button cancel" href="#top">キャンセル</a>
+    </div>
+    <div data-role="content">
+      <form action="http://notification.lnup.jp/deleteUser.php" method="post" data-ajax="false" id="deleteform">
+	<div data-role="fieldcontain">
+	  <label for="savedRegID">RegID</label>
+	  <input type="text" id="savedRegID" name="savedRegID" readonly="readonly">
+	</div>
+	<input type="submit" value="ユーザー情報を解除する" id="deleteRegID" name="deleteRegID" data-icon="delete">
+      </form>
+    </div>
+    <div data-role="footer">
+      <h4><small>&copy; 2013 Paradox</small></h4>
+    </div>
+  </div>
+  <!-- /settings -->
+
+</body>
+</html>

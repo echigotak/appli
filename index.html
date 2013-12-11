@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html> 
+<html> 
+  <head> 
+  <meta charset="UTF-8">
+  <title>Club-M 会員証</title> 
+        <meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="themes/luxuary.min.css" />
+		<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+		<link rel="stylesheet" href="themes/jquery.mobile.structure-1.4.0-rc.1.min.css" />
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="themes/jquery.mobile-1.4.0-rc.1.min.js"></script>
+
+
+  <script src="phonegap.js"></script>
+  <script src="PushNotification.js"></script>
+  <script src="js/roppongi.js"></script>
+  <script src="js/pageresize.js"></script>
+        <script type="text/javascript">
+            roppongi.init();
+        </script>
+  <style type="text/css">
+  </style>
+  <!-- width1448/height1964 -->
+</head>
+<body>
+  <div data-role="page" data-theme="a" id="top" data-add-back-btn="false">
+    <img class="bg" src="img/base.png">
+    <div data-role="content">
+	<img src="img/clubm.png" class="club" style="position:absolute;top:680px;left:500px;width:400px;height:72px;">
+	<a href="#" data-role="button" id="btn_sinki" style="position:absolute;top:1050px;left:298px;width:800px;font-size:50px;line-height:1em;padding:0.3em 0 0.2em 0;box-shadow:4px 4px 6px #777;">
+	  <img src="img/menu_sinki.png" style="width:440px;height:75px;">
+	</a>
+	<div id="app-status-div" style="position:absolute;top:1200px;left:275px;font-size:22px;width:875px;">
+		<ul id="app-status-ul">
+		</ul>
+	</div>
+    </div>
+  </div>
+  <!-- /top -->
+
+  <div data-role="page" data-theme="a" id="showid" data-add-back-btn="false">
+    <img class="bg" src="img/base.png">
+    <div data-role="content">
+	<img src="img/clubm.png" class="club" style="position:absolute;top:680px;left:500px;width:400px;height:72px;">
+	<div class="kaiin_syoumei" style="position:absolute;top:880px;left:324px;text-align:center;width:800px;height:50%;font-size:50px;line-height:2em;">
+	  貴方がＣｌｕｂ－Ｍの会員で<br>あることをここに証明する。
+	</div>
+	<div class="kaiin_num" style="position:absolute;top:1210px;text-align:center;width:100%;font-size:60px;">
+	  ID:&nbsp;<span id="kaiin_id"></span>
+	</div>
+	</div>
+    </div>
+  </div>
+  <!-- /top -->
+
+</body>
+</html>
