@@ -23,6 +23,7 @@ var roppongi = {
   ,onDeviceReady: function() {
 	//navigator.splashscreen.hide();
 	$('#btn_sinki').one('click touchdown',function(){
+	  $.mobile.loading('show');
 	  $('#btn_sinki').attr('disabled', 'disabled');
 	  roppongi.submit();
 	  return false;
@@ -47,7 +48,6 @@ var roppongi = {
 	roppongi.showID();
   }
   ,showID: function() {
-	$.mobile.loading('show');
 	location.href = roppongi_member
 	  + '?id=' + this.data.id
 	  + '&uuid=' + this.data.uuid
