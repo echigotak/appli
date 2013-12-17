@@ -218,5 +218,5 @@ window.onerror = function (e, file, num) {
     loginpage.showStatus('Error on ' + file + ' at Line: ' + num);
 };
 
-$(document).ready(function() {   roppongi.onDeviceReady(); });
+//$(document).ready(function() {   roppongi.onDeviceReady(); });
 //$(document).ready(function() { roppongi.autologin();});
