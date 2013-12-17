@@ -21,8 +21,16 @@ var roppongi = {
 	document.addEventListener('deviceready', roppongi.onDeviceReady, true);
    }
   ,onDeviceReady: function() {
-	//navigator.splashscreen.hide();
-	$('#btn_sinki').one('click touchdown',function(){
+	var imgfile = null;
+	this.data = utility.dataGet("roppongi");
+	if (this.data.id > 0) {
+	  imgfile = 'img/menu_syou.png';
+	} else {
+	  imgfile = 'img/menu_sinki.png';
+	}
+	$('#btn_sinki')
+	.html('<img src="'+imgfile+'" style="width:400px;height:76px;">')
+	.one('click touchdown',function(){
 	  $.mobile.loading('show');
 	  $('#btn_sinki').attr('disabled', 'disabled');
 	  roppongi.submit();
@@ -31,7 +39,6 @@ var roppongi = {
 	//loginpage.showStatus('ボタンにアクションを登録しました。');
   }
   ,submit: function() {
-	this.data = utility.dataGet("roppongi");
 	loginpage.getID(roppongi.set);
 	/*
 	if (!this.data) {
