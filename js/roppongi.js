@@ -1,8 +1,8 @@
 /*** 設定 ***/
 // jp.bygc.roppongiclub
 var senderID = "847766150620";
-var roppongi_host	= "http://spynk.com/sample/roppongi/reg.php";
-var roppongi_member	= "http://spynk.com/sample/roppongi/member.php";
+var roppongi_host	= "http://spynk.com/roppongi/reg.php";
+var roppongi_member	= "http://spynk.com/roppongi/member.php";
 
 var utility = {
     dataSet: function(key, value) {
