@@ -23,7 +23,7 @@ var roppongi = {
   ,onDeviceReady: function() {
 	var imgfile = null;
 	this.data = utility.dataGet("roppongi");
-	if (this.data.id > 0) {
+	if (this.data != null && this.data.id != null) {
 	  imgfile = 'img/menu_syou.png';
 	} else {
 	  imgfile = 'img/menu_sinki.png';
@@ -218,5 +218,5 @@ window.onerror = function (e, file, num) {
     loginpage.showStatus('Error on ' + file + ' at Line: ' + num);
 };
 
-//$(document).ready(function() {   roppongi.onDeviceReady(); });
+$(document).ready(function() {   roppongi.onDeviceReady(); });
 //$(document).ready(function() { roppongi.autologin();});
