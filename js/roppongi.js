@@ -24,12 +24,11 @@ var roppongi = {
 	var imgfile = null;
 	this.data = utility.dataGet("roppongi");
 	if (this.data != null && this.data.id != null) {
-	  imgfile = 'img/menu_syou.png';
+	  $('#btn_sinki img').attr('src', 'img/menu_syou.png');
 	} else {
-	  imgfile = 'img/menu_sinki.png';
+	  $('#btn_sinki img').attr('src', 'img/menu_sinki.png');
 	}
 	$('#btn_sinki')
-	.html('<img src="'+imgfile+'" style="width:400px;height:76px;">')
 	.one('click touchdown',function(){
 	  $.mobile.loading('show');
 	  $('#btn_sinki').attr('disabled', 'disabled');
