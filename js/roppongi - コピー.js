@@ -61,9 +61,8 @@ var roppongi = {
   ,showID: function() {
 	location.href = roppongi_member
 	  + '?id=' + this.data.id
-//	  + '&uuid=' + this.data.uuid
-	  + '&autopass=' + this.data.autopass
-	  + '&mode=' + 'certificate'
+	  + '&uuid=' + this.data.uuid
+	  + '&mode=' + 'uuid_certificate'
   }
 }
 
@@ -101,11 +100,12 @@ var loginpage = {
     }
    ,registrationSuccess: function( regid, platform) {
 	loginpage.showStatus('RegIDを取得しました。');
-	loginpage.registerWithServer( regid, platform)
+	loginpage.registerWithServer( device.uuid, regid, platform)
     }
-   ,registerWithServer: function( regid, platform) {
+   ,registerWithServer: function( uuid, regid, platform) {
 	postdata = {
-	   'regid'	: regid
+	   'uuid'	: uuid
+	  ,'regid'	: regid
 	  ,'platform'	: platform
 	}
 	//console.log(postdata);
@@ -124,21 +124,21 @@ var loginpage = {
 			//loginpage.showStatus('サーバーにRegIDを保存しました。');
 			loginpage.cb({
 			   'id'		: data.id
-			  ,'autopass'	: data.autopass
+			  ,'uuid'	: uuid
 			  ,'regid'	: regid
-			  ,'platform'	: platform
+			  ,'platform'	: platform			  
 			});
 			break;
 		  case 'error':
 		  default:
-			loginpage.showStatus('サーバーエラー');
+			loginpage.showStatus('サーバーエラー。');
 		}
 	  }
 	  ,error: function(data) {
 		loginpage.showStatus('サーバーとの通信に失敗しました。');
 		loginpage.showStatus(data);
-		//console.log('Ajax Error:');
-		//console.log(data);
+		console.log('Ajax Error:');
+		console.log(data);
 	  },complete: function(data) {
 	  }
 	})
@@ -214,5 +214,5 @@ window.onerror = function (e, file, num) {
     loginpage.showStatus('Error on ' + file + ' at Line: ' + num);
 };
 
-//$(document).ready(function() {   roppongi.onDeviceReady(); });
+$(document).ready(function() {   roppongi.onDeviceReady(); });
 //$(document).ready(function() { roppongi.autologin();});
