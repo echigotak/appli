@@ -110,6 +110,7 @@ var loginpage = {
 	  ,'platform'	: platform
 	}
 	//console.log(postdata);
+	for (v in postdata) loginpage.showStatus(v +'::'+data[v]);
 	$.ajax({
 	   url : roppongi_host
 	  ,cache: false
