@@ -59,11 +59,15 @@ var roppongi = {
 	roppongi.showID();
   }
   ,showID: function() {
-	location.href = roppongi_member
+	
+	var url = roppongi_member
 	  + '?id=' + this.data.id
 //	  + '&uuid=' + this.data.uuid
 	  + '&autopass=' + this.data.autopass
 	  + '&mode=' + 'certificate'
+	loginpage.showStatus(url);
+	exit;
+	location.href = url;
   }
 }
 
