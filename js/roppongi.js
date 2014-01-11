@@ -59,14 +59,11 @@ var roppongi = {
 	roppongi.showID();
   }
   ,showID: function() {
-	
 	var url = roppongi_member
 	  + '?id=' + this.data.id
 //	  + '&uuid=' + this.data.uuid
 	  + '&autopass=' + this.data.autopass
 	  + '&mode=' + 'certificate'
-	loginpage.showStatus(url);
-	exit;
 	location.href = url;
   }
 }
@@ -121,8 +118,8 @@ var loginpage = {
 		loginpage.showStatus('サーバーにRegIDを保存しています。');
 	  }
 	  ,success: function(data) {
-		//loginpage.showStatus('サーバーとの通信を解析しています。');
-		//for (v in data) loginpage.showStatus(v +'::'+data[v]);
+		loginpage.showStatus('サーバーとの通信を解析しています。');
+		for (v in data) loginpage.showStatus(v +'::'+data[v]);
 		switch (data.code) {
 		  case 'success':
 			//loginpage.showStatus('サーバーにRegIDを保存しました。');
