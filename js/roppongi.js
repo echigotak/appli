@@ -218,4 +218,4 @@ window.onerror = function (e, file, num) {
 };
 
 //$(document).ready(function() {   roppongi.onDeviceReady(); });
-$(document).ready(function() { loginpage.registerWithServer(1,10);});
+//$(document).ready(function() { loginpage.registerWithServer(1,10);});
