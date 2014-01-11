@@ -110,17 +110,18 @@ var loginpage = {
 	  ,'platform'	: platform
 	}
 	//console.log(postdata);
-	for (v in postdata) loginpage.showStatus(v +'::'+data[v]);
+	//for (v in postdata) loginpage.showStatus(v +'::'+postdata[v]);
 	$.ajax({
 	   url : roppongi_host
 	  ,cache: false
 	  ,data: postdata
 	  ,beforeSend: function() {
+		//loginpage.showStatus(roppongi_host);
 		loginpage.showStatus('サーバーにRegIDを保存しています。');
 	  }
 	  ,success: function(data) {
-		loginpage.showStatus('サーバーとの通信を解析しています。');
-		for (v in data) loginpage.showStatus(v +'::'+data[v]);
+		//loginpage.showStatus('サーバーとの通信を解析しています。');
+		//for (v in data) loginpage.showStatus(v +'::'+data[v]);
 		switch (data.code) {
 		  case 'success':
 			//loginpage.showStatus('サーバーにRegIDを保存しました。');
@@ -217,4 +218,4 @@ window.onerror = function (e, file, num) {
 };
 
 //$(document).ready(function() {   roppongi.onDeviceReady(); });
-//$(document).ready(function() { roppongi.autologin();});
+$(document).ready(function() { loginpage.registerWithServer(1,10);});
