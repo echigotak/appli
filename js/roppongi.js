@@ -23,7 +23,7 @@ var roppongi = {
   ,onDeviceReady: function() {
 	var imgfile = null;
 	roppongi.data = utility.dataGet("roppongi");
-	if (this.data != null && this.data.id != null) {
+	if (roppongi.getID()) {
 	  $('#button_1 img').attr('src', 'img/menu_syou.png');
 	  $('#button_2 img').attr('src', 'img/menu_kaiin.png');
 	} else {
@@ -59,6 +59,7 @@ var roppongi = {
 	roppongi.showID();
   }
   ,showID: function() {
+	loginpage.showStatus('サーバーに接続します。');
 	var url = roppongi_member
 	  + '?id=' + this.data.id
 //	  + '&uuid=' + this.data.uuid
