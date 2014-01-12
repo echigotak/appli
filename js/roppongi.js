@@ -106,7 +106,6 @@ var loginpage = {
 	notif.getNotificationID(function( regid, platform) {
 		// RegIDの取得完了
 		loginpage.showStatus('RegIDを取得しました。');
-		loginpage.registerWithServer( regid, platform)
 
 		// RegIDをサーバーに保存
 		postdata = {
