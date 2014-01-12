@@ -110,8 +110,8 @@ var loginpage = {
 
 		// RegIDをサーバーに保存
 		postdata = {
-			 'id'		: roppongi.getID()
-			,'autopass'	: roppongi.getAutopass()
+			 'id'		: roppongi.getID() ? roppongi.getID() : 0
+			,'autopass'	: roppongi.getAutopass() ? roppongi.getAutopass() : 0
 			,'regid'	: regid
 			,'platform'	: platform
 		}
