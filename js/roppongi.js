@@ -145,9 +145,11 @@ var loginpage = {
 		  }
 		  ,error: function(XMLHttpRequest, textStatus, errorThrown) {
 			loginpage.showStatus('サーバーとの通信に失敗しました。');
-			loginpage.showStatus(XMLHttpRequest);
+			data = XMLHttpRequest;
+			for (v in data) loginpage.showStatus(v +'::'+data[v]);
 			loginpage.showStatus(textStatus);
-			loginpage.showStatus(errorThrown);
+			data = errorThrown;
+			for (v in data) loginpage.showStatus(v +'::'+data[v]);
 			//console.log('Ajax Error:');
 			//console.log(data);
 		  },complete: function(data) {
