@@ -23,6 +23,10 @@ var roppongi = {
   ,onDeviceReady: function() {
 	var imgfile = null;
 	this.data = utility.dataGet("roppongi");
+loginpage.showStatus('ID:'+this.data.id);
+loginpage.showStatus('pass:'+this.data.autopass);
+loginpage.showStatus('ID:'+roppongi.getID());
+loginpage.showStatus('pass:'+roppongi.getAutopass());
 	if (this.data != null && this.data.id != null) {
 	  $('#button_1 img').attr('src', 'img/menu_syou.png');
 	  $('#button_2 img').attr('src', 'img/menu_kaiin.png');
@@ -59,6 +63,9 @@ var roppongi = {
 	roppongi.showID();
   }
   ,showID: function() {
+loginpage.showStatus('ID:'+roppongi.getID());
+loginpage.showStatus('pass:'+roppongi.getAutopass());
+return false;
 	var url = roppongi_member
 	  + '?id=' + this.data.id
 //	  + '&uuid=' + this.data.uuid
