@@ -23,8 +23,6 @@ var roppongi = {
   ,onDeviceReady: function() {
 	var imgfile = null;
 	this.data = utility.dataGet("roppongi");
-loginpage.showStatus('ID:'+this.data.id);
-loginpage.showStatus('pass:'+this.data.autopass);
 loginpage.showStatus('ID:'+roppongi.getID());
 loginpage.showStatus('pass:'+roppongi.getAutopass());
 	if (this.data != null && this.data.id != null) {
@@ -63,6 +61,8 @@ loginpage.showStatus('pass:'+roppongi.getAutopass());
 	roppongi.showID();
   }
   ,showID: function() {
+loginpage.showStatus('ID:' + this.data.id);
+loginpage.showStatus('pass:' + this.data.autopass);
 loginpage.showStatus('ID:'+roppongi.getID());
 loginpage.showStatus('pass:'+roppongi.getAutopass());
 return false;
