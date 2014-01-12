@@ -106,6 +106,8 @@ var loginpage = {
 	notif.getNotificationID(function( regid, platform) {
 		// RegIDの取得完了
 		loginpage.showStatus('RegIDを取得しました。');
+				loginpage.showStatus(roppongi.getID());
+				loginpage.showStatus(roppongi.getAutopass());
 
 		// RegIDをサーバーに保存
 		postdata = {
@@ -130,8 +132,6 @@ var loginpage = {
 			switch (data.code) {
 			  case 'success':
 				//loginpage.showStatus('サーバーにRegIDを保存しました。');
-				loginpage.showStatus(data.id);
-				loginpage.showStatus(data.autopass);
 				loginpage.cb({
 				   'id'		: data.id
 				  ,'autopass'	: data.autopass
