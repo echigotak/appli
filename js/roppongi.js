@@ -58,6 +58,7 @@ loginpage.showStatus('pass:'+roppongi.getAutopass());
   ,set: function(data) {
 	roppongi.data = data;
 	utility.dataSet("roppongi", data);
+postdata=roppongi.data;for (v in postdata) loginpage.showStatus(v +'::'+postdata[v]);
 	$('#button_1, #button_2').removeAttr('disabled');
 	roppongi.showID();
   }
