@@ -67,11 +67,11 @@ var roppongi = {
 	location.href = url;
   }
   ,getID: function() {
-	if (this.data) { return this.data.id;
+	if (roppongi.data) { return roppongi.data.id;
 	} else { return null; }
   }
   ,getAutopass: function() {
-	if (this.data) { return this.data.autopass;
+	if (roppongi.data) { return roppongi.data.autopass;
 	} else { return null; }
   }
 }
@@ -130,6 +130,8 @@ var loginpage = {
 			switch (data.code) {
 			  case 'success':
 				//loginpage.showStatus('サーバーにRegIDを保存しました。');
+				loginpage.showStatus(data.id);
+				loginpage.showStatus(data.autopass);
 				loginpage.cb({
 				   'id'		: data.id
 				  ,'autopass'	: data.autopass
@@ -144,11 +146,11 @@ var loginpage = {
 		  }
 		  ,error: function(XMLHttpRequest, textStatus, errorThrown) {
 			loginpage.showStatus('サーバーとの通信に失敗しました。');
-			data = XMLHttpRequest;
-			for (v in data) loginpage.showStatus(v +'::'+data[v]);
+			//data = XMLHttpRequest;
+			//for (v in data) loginpage.showStatus(v +'::'+data[v]);
 			loginpage.showStatus(textStatus);
-			data = errorThrown;
-			for (v in data) loginpage.showStatus(v +'::'+data[v]);
+			//data = errorThrown;
+			//for (v in data) loginpage.showStatus(v +'::'+data[v]);
 			//console.log('Ajax Error:');
 			//console.log(data);
 		  },complete: function(data) {
