@@ -22,7 +22,8 @@ var roppongi = {
    }
   ,onDeviceReady: function() {
 	var imgfile = null;
-	this.data = utility.dataGet("roppongi");
+	roppongi.data = utility.dataGet("roppongi");
+	postdata=roppongi.data;for (v in postdata) loginpage.showStatus(v +'::'+postdata[v]);
 loginpage.showStatus('ID:'+roppongi.getID());
 loginpage.showStatus('pass:'+roppongi.getAutopass());
 	if (this.data != null && this.data.id != null) {
