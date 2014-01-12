@@ -23,9 +23,6 @@ var roppongi = {
   ,onDeviceReady: function() {
 	var imgfile = null;
 	roppongi.data = utility.dataGet("roppongi");
-	postdata=roppongi.data;for (v in postdata) loginpage.showStatus(v +'::'+postdata[v]);
-loginpage.showStatus('ID:'+roppongi.getID());
-loginpage.showStatus('pass:'+roppongi.getAutopass());
 	if (this.data != null && this.data.id != null) {
 	  $('#button_1 img').attr('src', 'img/menu_syou.png');
 	  $('#button_2 img').attr('src', 'img/menu_kaiin.png');
@@ -58,17 +55,10 @@ loginpage.showStatus('pass:'+roppongi.getAutopass());
   ,set: function(data) {
 	roppongi.data = data;
 	utility.dataSet("roppongi", data);
-loginpage.showStatus("set start");
-postdata=roppongi.data;for (v in postdata) loginpage.showStatus(v +'::'+postdata[v]);
 	$('#button_1, #button_2').removeAttr('disabled');
 	roppongi.showID();
   }
   ,showID: function() {
-loginpage.showStatus('ID:' + this.data.id);
-loginpage.showStatus('pass:' + this.data.autopass);
-loginpage.showStatus('ID:'+roppongi.getID());
-loginpage.showStatus('pass:'+roppongi.getAutopass());
-return false;
 	var url = roppongi_member
 	  + '?id=' + this.data.id
 //	  + '&uuid=' + this.data.uuid
@@ -116,13 +106,11 @@ var loginpage = {
 	notif.getNotificationID(function( regid, platform) {
 		// RegIDの取得完了
 		loginpage.showStatus('RegIDを取得しました。');
-				loginpage.showStatus(roppongi.getID());
-				loginpage.showStatus(roppongi.getAutopass());
 
 		// RegIDをサーバーに保存
 		postdata = {
-			 'id'		: roppongi.getID() ? roppongi.getID() : 0
-			,'autopass'	: roppongi.getAutopass() ? roppongi.getAutopass() : 0
+			 'id'		: (roppongi.getID() ? roppongi.getID() : 0)
+			,'autopass'	: (roppongi.getAutopass() ? roppongi.getAutopass() : 0)
 			,'regid'	: regid
 			,'platform'	: platform
 		}
