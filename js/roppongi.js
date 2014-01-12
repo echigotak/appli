@@ -66,90 +66,105 @@ var roppongi = {
 	  + '&mode=' + 'certificate'
 	location.href = url;
   }
+  ,getID: function() {
+	if (this.data) { return this.data.id;
+	} else { return null; }
+  }
+  ,getAutopass: function() {
+	if (this.data) { return this.data.autopass;
+	} else { return null; }
+  }
 }
 
 var loginpage = {
-    timer:	null
-   ,cb:		null
-    // コンストラクタ
-   ,getID: function (cb) {
+  timer:	null
+ ,cb:		null
+ ,getID: function (cb) {
 	this.cb = cb;
+	// オンラインチェック
 	if (navigator.onLine) {
 	    loginpage.doLogin();
 	} else {
 	    loginpage.showStatus('端末がオフラインです。');
+		var checkOnline = function() {
+			if (navigator.onLine) {
+			    loginpage.doLogin();
+			} else {
+			    loginpage.timer
+				 = setTimeout(checkOnline,1500);
+			}
+	    }
 	    loginpage.timer
-		 = setTimeout(loginpage.checkOnline,1500);
+		 = setTimeout(checkOnline,1500);
 	}
-    }
-   ,showStatus: function(status) {
+  }
+ ,doLogin: function() {
+	loginpage.showStatus('オンラインであることを確認しました。');
+	loginpage.showStatus('RegIDを取得します。');
+
+	// GCM or APNSに問い合わせてRegIDを取得
+	notif.getNotificationID(function( regid, platform) {
+		// RegIDの取得完了
+		loginpage.showStatus('RegIDを取得しました。');
+		loginpage.registerWithServer( regid, platform)
+
+		// RegIDをサーバーに保存
+		postdata = {
+			 'id'		: roppongi.getID()
+			,'autopass'	: roppongi.getAutopass()
+			,'regid'	: regid
+			,'platform'	: platform
+		}
+		//console.log(postdata);
+		//for (v in postdata) loginpage.showStatus(v +'::'+postdata[v]);
+		$.ajax({
+		   url : roppongi_host
+		  ,cache: false
+		  ,data: postdata
+		  ,beforeSend: function() {
+			//loginpage.showStatus(roppongi_host);
+			loginpage.showStatus('サーバーにRegIDを保存しています。');
+		  }
+		  ,success: function(data) {
+			//loginpage.showStatus('サーバーとの通信を解析しています。');
+			//for (v in data) loginpage.showStatus(v +'::'+data[v]);
+			switch (data.code) {
+			  case 'success':
+				//loginpage.showStatus('サーバーにRegIDを保存しました。');
+				loginpage.cb({
+				   'id'		: data.id
+				  ,'autopass'	: data.autopass
+				  ,'regid'	: regid
+				  ,'platform'	: platform
+				});
+				break;
+			  case 'error':
+			  default:
+				loginpage.showStatus('サーバーエラー');
+			}
+		  }
+		  ,error: function(data) {
+			loginpage.showStatus('サーバーとの通信に失敗しました。');
+			loginpage.showStatus(data);
+			//console.log('Ajax Error:');
+			//console.log(data);
+		  },complete: function(data) {
+		  }
+		})
+
+	});
+  }
+ ,showStatus: function(status) {
 	$('#app-status-ul').append(
 	  $('<li>').html(status)
 	);
-    }
-   ,checkOnline: function() {
-	if (navigator.onLine) {
-	    loginpage.doLogin();
-	} else {
-	    loginpage.timer
-		 = setTimeout(loginpage.checkOnline,1500);
-	}
-    }
-   ,doLogin: function() {
-	loginpage.showStatus('オンラインであることを確認しました。');
-	loginpage.showStatus('RegIDを取得します。');
-	notif.getNotificationID();
-    }
-   ,registrationSuccess: function( regid, platform) {
-	loginpage.showStatus('RegIDを取得しました。');
-	loginpage.registerWithServer( regid, platform)
-    }
-   ,registerWithServer: function( regid, platform) {
-	postdata = {
-	   'regid'	: regid
-	  ,'platform'	: platform
-	}
-	//console.log(postdata);
-	//for (v in postdata) loginpage.showStatus(v +'::'+postdata[v]);
-	$.ajax({
-	   url : roppongi_host
-	  ,cache: false
-	  ,data: postdata
-	  ,beforeSend: function() {
-		//loginpage.showStatus(roppongi_host);
-		loginpage.showStatus('サーバーにRegIDを保存しています。');
-	  }
-	  ,success: function(data) {
-		//loginpage.showStatus('サーバーとの通信を解析しています。');
-		//for (v in data) loginpage.showStatus(v +'::'+data[v]);
-		switch (data.code) {
-		  case 'success':
-			//loginpage.showStatus('サーバーにRegIDを保存しました。');
-			loginpage.cb({
-			   'id'		: data.id
-			  ,'autopass'	: data.autopass
-			  ,'regid'	: regid
-			  ,'platform'	: platform
-			});
-			break;
-		  case 'error':
-		  default:
-			loginpage.showStatus('サーバーエラー');
-		}
-	  }
-	  ,error: function(data) {
-		loginpage.showStatus('サーバーとの通信に失敗しました。');
-		loginpage.showStatus(data);
-		//console.log('Ajax Error:');
-		//console.log(data);
-	  },complete: function(data) {
-	  }
-	})
-    }
+  }
 }
 
 var notif = {
-  getNotificationID: function() {
+   successCB: null
+  ,getNotificationID: function(cb) {
+	notif.successCB = cb;
     try 
     { 
       pushNotification = window.plugins.pushNotification;
@@ -174,7 +189,7 @@ var notif = {
 	{
 	    case 'registered':
 		if ( e.regid.length > 0 ) {
-			loginpage.registrationSuccess( e.regid, 'android');
+			notif.successCB( e.regid, 'android');
 		}
 		break;
 	    case 'message':
@@ -195,7 +210,7 @@ var notif = {
  ,onNotificationAPN: function(e) {}
  ,tokenHandler: function(result) {
 	loginpage.showStatus('APNSからの通知を取得しました。');
-	loginpage.registrationSuccess( result, 'iOS');
+	notif.successCB( result, 'iOS');
   }
  ,successHandler: function(result) {
 	loginpage.showStatus('通信成功。');
