@@ -118,9 +118,9 @@ var loginpage = {
 		//console.log(postdata);
 		//for (v in postdata) loginpage.showStatus(v +'::'+postdata[v]);
 		$.ajax({
-		   url : roppongi_host
+		   url	: roppongi_host
 		  ,cache: false
-		  ,data: postdata
+		  ,data	: postdata
 		  ,beforeSend: function() {
 			//loginpage.showStatus(roppongi_host);
 			loginpage.showStatus('サーバーにRegIDを保存しています。');
@@ -143,9 +143,11 @@ var loginpage = {
 				loginpage.showStatus('サーバーエラー');
 			}
 		  }
-		  ,error: function(data) {
+		  ,error: function(XMLHttpRequest, textStatus, errorThrown) {
 			loginpage.showStatus('サーバーとの通信に失敗しました。');
-			loginpage.showStatus(data);
+			loginpage.showStatus(XMLHttpRequest);
+			loginpage.showStatus(textStatus);
+			loginpage.showStatus(errorThrown);
 			//console.log('Ajax Error:');
 			//console.log(data);
 		  },complete: function(data) {
