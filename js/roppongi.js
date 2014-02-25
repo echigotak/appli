@@ -14,7 +14,6 @@ var utility = {
 	return d ? JSON.parse(d) : null;
    }
 }
-
 var roppongi = {
    data: {}
   ,init: function() {
@@ -24,10 +23,12 @@ var roppongi = {
 	var imgfile = null;
 	roppongi.data = utility.dataGet("roppongi");
 	if (roppongi.getID()) {
-	  $('#button_1 img').attr('src', 'img/menu_syou.png');
-	  $('#button_2 img').attr('src', 'img/menu_kaiin.png');
+//	  $('#button_1 img').attr('src', 'img/menu_syou.png');
+	  $('#button_1').show().find('img').attr('src', 'img/menu_syou.png');
+	  $('#button_2').show().find('img').attr('src', 'img/menu_kaiin.png');
 	} else {
-	  $('#button_1 img').attr('src', 'img/menu_sinki.png');
+	  $('#button_1').show().find('img').attr('src', 'img/menu_sinki.png');
+//	  $('#button_1 img').attr('src', 'img/menu_sinki.png');
 	  $('#button_2 img').attr('src', 'img/menu_kisyu.png');
 	}
 	$('#button_1')
@@ -41,7 +42,8 @@ var roppongi = {
 	.one('click touchdown',function(){
 	  $.mobile.loading('show');
 	  $('#button_1, #button_2').attr('disabled', 'disabled');
-	  roppongi.submit2();
+	  //roppongi.submit2();
+	  roppongi.gotoMemberpage();
 	  return false;
 	});
 	//loginpage.showStatus('ボタンにアクションを登録しました。');
@@ -58,11 +60,19 @@ var roppongi = {
 	$('#button_1, #button_2').removeAttr('disabled');
 	roppongi.showID();
   }
+  ,gotoMemberpage: function() {
+	loginpage.showStatus('サーバーに接続します。');
+	var url = roppongi_member
+	  + '?id=' + this.data.id
+	  + '&autopass=' + this.data.autopass
+	  + '&mode=' + 'certificate'
+	  + '&goto=' + 'memberpage'
+	location.href = url;
+  }
   ,showID: function() {
 	loginpage.showStatus('サーバーに接続します。');
 	var url = roppongi_member
 	  + '?id=' + this.data.id
-//	  + '&uuid=' + this.data.uuid
 	  + '&autopass=' + this.data.autopass
 	  + '&mode=' + 'certificate'
 	location.href = url;
