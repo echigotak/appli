@@ -1,6 +1,6 @@
 /*** 設定 ***/
 // jp.bygc.clubm
-var senderID = "847766150620";
+var senderID = "847766150620";  // Android GCM ID
 var roppongi_host	= "http://spynk.com/roppongi/reg.php";
 var roppongi_member	= "http://spynk.com/roppongi/member.php";
 
@@ -24,15 +24,13 @@ var roppongi = {
 	var isLoginTried = false;
 	roppongi.data = utility.dataGet("roppongi");
 	if (roppongi.getID()) {
-//	  $('#button_1 img').attr('src', 'img/menu_syou.png');
 	  $('#button_1').show().find('img').attr('src', 'img/menu_kaiin.png');
 //	  $('#button_1').show().find('img').attr('src', 'img/menu_syou.png');
 //	  $('#button_2').show().find('img').attr('src', 'img/menu_kaiin.png');
       if (!isLoginTried) roppongi.submit();
 	} else {
 	  $('#button_1').show().find('img').attr('src', 'img/menu_sinki.png');
-//	  $('#button_1 img').attr('src', 'img/menu_sinki.png');
-	  $('#button_2 img').attr('src', 'img/menu_kisyu.png');
+	  //$('#button_2').show().find('img').attr('src', 'img/menu_kisyu.png');
 	}
 	$('#button_1')
 	.one('click touchdown',function(){

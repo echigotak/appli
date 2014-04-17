@@ -3,8 +3,8 @@
 	    ratio, margin;
 	wWidth	= window.innerWidth;
 	wHeight	= window.innerHeight;
-	iWidth	= 1400;
-	iHeight	= 1900;
+	iWidth	= $('.bg')[0].width;
+	iHeight	= $('.bg')[0].height;
 	ratio	= wWidth / iWidth;
 	mWidth	= iWidth  * ratio;
 	mHeight	= iHeight * ratio;
