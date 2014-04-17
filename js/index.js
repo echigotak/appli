@@ -16,7 +16,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        $(function(){app.onDeviceReady()}); // for debug
+        //$(function(){app.onDeviceReady()}); // for debug
     },
     // deviceready Event Handler
     //
@@ -77,7 +77,7 @@ var app = {
     // Show state
     showState  : function(state) {
         $('#app-status-ul').append(
-          $('<li>').html(status)
+          $('<li>').html(state)
         );
     },
     // Login Failed
