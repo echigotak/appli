@@ -20,6 +20,7 @@ var app = {
 		{
 			if( $("#top").length > 0)
 			{
+        	alert('top'+$("#top").length);
 				// call this to get a new token each time. don't call it to reuse existing token.
 				//pushNotification.unregister(successHandler, errorHandler);
 				e.preventDefault();
@@ -27,6 +28,7 @@ var app = {
 			}
 			else
 			{
+			alert('not top');
 				navigator.app.backHistory();
 			}
 		}, false);
