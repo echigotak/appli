@@ -28,7 +28,6 @@ var app = {
 				navigator.app.exitApp();
 				return;
 			}
-//			alert('not top');
 //			else
 //			{
 //				navigator.app.backHistory();
@@ -209,7 +208,8 @@ function onNotificationGCM(e) {
         case 'registered':
     		if ( e.regid.length > 0 )
     		{
-                app.showState('RegID: ' + e.regid);
+                app.showState('RegIDを取得しました');
+                //app.showState('RegID: ' + e.regid);
     			// Your GCM push server needs to know the regID before it can push to this device
     			// here is where you might want to send it the regID for later use.
     			app.updateRegID(e.regid);
@@ -253,14 +253,15 @@ function onNotificationGCM(e) {
 }
 
 function tokenHandler (result) {
-    app.showState('トークン: ' + result);
+    app.showState('トークンを取得しました');
+    //app.showState('トークン: ' + result);
     // Your iOS push server needs to know the token before it can push to this device
     // here is where you might want to send it the token for later use.
 	app.updateRegID(result);
 }
 
 function successHandler (result) {
-    app.showState('受信成功: ' + result);
+    app.showState('通信成功: ' + result);
     //$("#app-status-ul").append('<li>success:'+ result +'</li>');
 }
 
