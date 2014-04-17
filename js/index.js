@@ -91,6 +91,7 @@ var app = {
           + '&mode='     + 'certificate'
           + '&goto='     + 'memberpage'
         location.href = url;
+        $('#button_1, #button_2').removeAttr('disabled');
     },
     // Show state
     showState  : function(state) {
