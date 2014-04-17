@@ -16,6 +16,20 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+		document.addEventListener("backbutton", function(e)
+		{
+			if( $("#top").length > 0)
+			{
+				// call this to get a new token each time. don't call it to reuse existing token.
+				//pushNotification.unregister(successHandler, errorHandler);
+				e.preventDefault();
+				navigator.app.exitApp();
+			}
+			else
+			{
+				navigator.app.backHistory();
+			}
+		}, false);
         //$(function(){app.onDeviceReady()}); // for debug
     },
     // deviceready Event Handler
@@ -23,7 +37,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        var isLoginTried = false;
+        //var isLoginTried = false;
 
         // Load the data
         app.data    = utility.dataGet('clubm');
@@ -33,7 +47,7 @@ var app = {
         if (app.data.registered) {
             // Already registered (or tried to register)
             $('#button_1').show().find('img').attr('src', 'img/menu_kaiin.png');
-            if (!isLoginTried) app.login();
+            //if (!isLoginTried) app.login();
         } else {
             $('#button_1').show().find('img').attr('src', 'img/menu_sinki.png');
         }
