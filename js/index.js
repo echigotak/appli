@@ -25,12 +25,13 @@ var app = {
 				//pushNotification.unregister(successHandler, errorHandler);
 				e.preventDefault();
 				navigator.app.exitApp();
+				return;
 			}
-			else
-			{
 			alert('not top');
-				navigator.app.backHistory();
-			}
+//			else
+//			{
+//				navigator.app.backHistory();
+//			}
 		}, false);
         //$(function(){app.onDeviceReady()}); // for debug
     },
