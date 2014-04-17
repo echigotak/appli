@@ -16,23 +16,25 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        /*
 		document.addEventListener("backbutton", function(e)
 		{
 			if( $("#top").length > 0)
 			{
-        	alert('top'+$("#top").length);
+//        	alert('top'+$("#top").length);
 				// call this to get a new token each time. don't call it to reuse existing token.
 				//pushNotification.unregister(successHandler, errorHandler);
 				e.preventDefault();
 				navigator.app.exitApp();
 				return;
 			}
-			alert('not top');
+//			alert('not top');
 //			else
 //			{
 //				navigator.app.backHistory();
 //			}
 		}, false);
+		*/
         //$(function(){app.onDeviceReady()}); // for debug
     },
     // deviceready Event Handler
