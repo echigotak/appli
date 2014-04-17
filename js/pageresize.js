@@ -1,4 +1,5 @@
   $(function(){
+    $('.bg').show();
 	var wWidth, wHeight, iWidth, iHeight, mWidth, mHeight,
 	    ratio, margin;
 	wWidth	= window.innerWidth;
