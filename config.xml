@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
@@ -9,7 +9,7 @@
     <name>Club M</name>
 
     <description>
-        Club M�̉���؃A�v���ł��B
+        Club Mの会員証アプリです。
     </description>
 
     <author href="http://club-m.net/" email="taka@linkup-c.jp">
