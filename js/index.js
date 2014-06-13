@@ -4,6 +4,9 @@ var roppongi_host	= "http://spynk.com/roppongi/reg.php";
 var roppongi_member	= "http://spynk.com/roppongi/member.php";
 var pushNotification;
 
+
+$(function(){app.onDeviceReady();});
+
 var app = {
     data    : {},
     // Application Constructor
@@ -54,6 +57,7 @@ var app = {
             //if (!isLoginTried) app.login();
         } else {
             $('#button_1').show().find('img').attr('src', 'img/menu_sinki.png');
+            $('#button_2').show().find('img').attr('src', 'img/idlogin.png');
         }
         
         // Bind event listeners to button
@@ -62,6 +66,13 @@ var app = {
               $.mobile.loading('show');
               $('#button_1, #button_2').attr('disabled', 'disabled');
               app.login();
+              return false;
+        });
+        $('#button_2')
+        .on('click touchdown',function(){
+              $.mobile.loading('show');
+              $('#button_1, #button_2').attr('disabled', 'disabled');
+              app.id_login_page();
               return false;
         });
         // Get RegID
@@ -92,6 +103,52 @@ var app = {
           + '&goto='     + 'memberpage'
         location.href = url;
         $('#button_1, #button_2').removeAttr('disabled');
+    },
+    // Go to ID Login Page
+    id_login_page   : function() {
+        $.mobile.changePage("#id_login_page");
+        $('body').on('submit', '#idlogin_form', function(e){
+            app.submit_idlogin();
+            e.preventDefault();
+            return false;
+        })
+    },
+    submit_idlogin  : function(e) {
+        var is_ok = true;
+        $('#idlogin_form input, #idlogin_form select').each(function(){
+            if( !$(this).val() ) {
+                $(this)
+                .on("focus",function(){ $(this).parent().removeClass("input-alert"); })
+                .parent().addClass("input-alert");
+                is_ok = false;
+                $("#error-message").text("すべての項目を入力してください。");
+            }
+        });
+        if (is_ok) {
+            $.mobile.loading('show');
+            $('#idlogin_form input[type=submit]').attr('disabled', 'disabled');
+            $.ajax({
+    		   url	    : roppongi_member + '?mode=idlogin_try&regid=' + app.data.RegID
+    		               + '&' + $('#idlogin_form').serialize()
+              ,success  : function(data) {
+                switch (data.code) {
+                    case 'success':
+                        // Save the state in local
+                        app.data.id         = data.id;
+                        app.data.autopass   = data.autopass;
+                        utility.dataSet('clubm', app.data);
+                        app.login();
+                        break;
+                    case 'error'  :
+                    default       :
+                        $("#error-message").text("ユーザーが見つかりません。<br>入力内容をご確認ください。");
+                        $.mobile.loading('hide');
+                        $('#idlogin_form input[type=submit]').removeAttr('disabled');
+                        break;
+                }
+              }
+           });
+        }
     },
     // Show state
     showState  : function(state) {

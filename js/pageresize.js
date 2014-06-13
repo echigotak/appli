@@ -20,7 +20,7 @@
 			,'width'	: mWidth + 'px'
 			,'height'	: mHeight + 'px'
 		  })
-		  $('.ui-content').css({
+		  $('.resize-container').css({
 			 'position'	: 'absolute'
 			,'top'		: margin + 'px'
 			,'left'		: 0
@@ -39,7 +39,7 @@
 			,'width'	: mWidth + 'px'
 			,'height'	: mHeight + 'px'
 		  })
-		  $('.ui-content').css({
+		  $('.resize-container').css({
 			 'position'	: 'absolute'
 			,'top'		: 0
 			,'left'		: margin + 'px'
@@ -55,12 +55,12 @@
 			obj.css( key, before*ratio + 'px');
 		    });
 		}
-		$('.ui-content').find('img, div, a').each(function(){
+		$('.resize-container').find('img, div, a').each(function(){
 		   cssResize( $(this), ['left','top','width','height','font-size'] );
 		});
 	}
 	$('div[data-role="page"]').on('pageinit', function(){
-	  pageResize();
+	  //pageResize();
 	});
 	pageResize();
   });
