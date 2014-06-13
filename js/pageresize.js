@@ -58,9 +58,15 @@
 		$('.resize-container').find('img, div, a').each(function(){
 		   cssResize( $(this), ['left','top','width','height','font-size'] );
 		});
+         if ( window.device.platform === 'iOS' && parseFloat(window.device.version) >= 7.0 ) {
+             $('.ui-header > *').css('margin-top', function (index, curValue) {return parseInt(curValue, 10) + 20 + 'px';});
+         }
 	}
 	$('div[data-role="page"]').on('pageinit', function(){
 	  //pageResize();
+     if ( window.device.platform === 'iOS' && parseFloat(window.device.version) >= 7.0 ) {
+         $('.ui-header > *').css('margin-top', function (index, curValue) {return parseInt(curValue, 10) + 20 + 'px';});
+     }
 	});
 	pageResize();
   });
