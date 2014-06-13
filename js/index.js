@@ -141,7 +141,7 @@ var app = {
                         break;
                     case 'error'  :
                     default       :
-                        $("#error-message").text("ユーザーが見つかりません。<br>入力内容をご確認ください。");
+                        $("#error-message").html("ユーザーが見つかりません。<br>入力内容をご確認ください。");
                         $.mobile.loading('hide');
                         $('#idlogin_form input[type=submit]').removeAttr('disabled');
                         break;
