@@ -5,7 +5,7 @@ var roppongi_member	= "http://spynk.com/roppongi/member.php";
 var pushNotification;
 
 
-$(function(){app.onDeviceReady();});
+//$(function(){app.onDeviceReady();});
 
 var app = {
     data    : {},
