@@ -87,8 +87,11 @@ var app = {
     	}
         if (!app.data.RegID) {
     	    app.showState('RegIDが取得できません。');
+    	    /*
             app.loginFailed();
             return false;
+            */
+            app.data.RegID = 0;
         }
         // Save the state
         app.data.registered = true;

@@ -1,4 +1,5 @@
-  $(function(){
+
+var app_pageresize = function(){
     $('.bg').show();
 	var wWidth, wHeight, iWidth, iHeight, mWidth, mHeight,
 	    ratio, margin;
@@ -69,4 +70,6 @@
      }
 	});
 	pageResize();
-  });
+  }
+
+document.addEventListener('deviceready', app_pageresize, false);
