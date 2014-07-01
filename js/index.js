@@ -5,7 +5,7 @@ var roppongi_member	= "http://spynk.com/roppongi/member.php";
 var pushNotification;
 
 
-//$(function(){app.onDeviceReady();});
+$(function(){app.onDeviceReady();});
 
 var app = {
     data    : {},
@@ -186,6 +186,7 @@ var app = {
         	txt="ページ内でエラーが発生しました。\n\n"; 
         	txt+="エラー: " + err.message + "\n\n"; 
         	alert(txt);
+        	app.updateRegID('InvalidRegID');
         }
     },
     // Update RegID
@@ -195,7 +196,7 @@ var app = {
 			 'id'		: app.data.id
 			,'autopass'	: app.data.autopass
 			,'regid'	: regid
-			,'platform'	: device.platform
+			,'platform'	: ((typeof device !== 'undefined') ? device.platform : 'unknown')
 		}
 	    app.showState('RegIDをサーバーに保存しています。');
 		$.ajax({
