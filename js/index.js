@@ -217,7 +217,7 @@ var app = {
 			  default:
 				app.showState('サーバーエラー:'+data);
 				console.log(data);
-				break;
+			    break;
 			}
 		  }
 		  ,error: function(XMLHttpRequest, textStatus, errorThrown) {
